@@ -1,0 +1,28 @@
+#include <iostream>
+#include<map>
+#include<string>
+using namespace std;
+int main()
+{
+	typedef map<string,int>mapType;
+	mapType populationMap;
+	populationMap.insert(pair<string,int>("Maharashtra",70256785));
+	populationMap.insert(pair<string,int>("Rajasthan",657830374));
+	populationMap.insert(pair<string,int>("Karnataka",667549));
+	populationMap.insert(pair<string,int>("Punjab",748495756));
+	populationMap.insert(pair<string,int>("WesBengal",754956623));
+	mapType::iterator iter;
+	cout<<"===============Population of states in India================\n";
+	cout<<"\nSize of populationMap "<<populationMap.size()<<"\n";
+	string state_name;
+	cout<<"\nEnter name of the state: ";
+    cin>>state_name;
+	iter=populationMap.find(state_name);
+	if(iter!=populationMap.end())
+		cout<<state_name<<"'s population is:"<<iter->second;
+	else
+		cout<<"Key is not populationMap"<<"\n";
+	    populationMap.clear();
+
+}
+

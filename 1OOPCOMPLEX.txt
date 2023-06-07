@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+class complex {
+ public :
+ float realp ,imagp;
+ public :
+ complex()
+ {
+ realp=0;
+ imagp=0;
+ }
+ complex(double ,double);
+ complex operator +( complex &);
+ complex operator *( complex &);
+ friend istream &operator>>( istream &,complex &);
+ friend ostream &operator<<( ostream &,complex &);
+};
+ complex ::complex(double x,double y)
+{
+ realp=x;
+ imagp=y;
+}
+ complex complex :: operator +( complex &c)
+{
+ complex temp;
+ temp.realp=realp+ c.realp;
+ temp.imagp= imagp+ c.imagp;
+ return temp;
+}
+complex complex :: operator *( complex &c)
+{
+ complex temp;
+ temp.realp=(realp*c.realp)-(imagp* c.imagp);
+ temp.imagp= (imagp*c.realp)+(realp*c.imagp);
+ return temp;
+}
+istream &operator >>( istream &in,complex &c)
+{
+ cout<<"enter real part of complex number"<<endl;
+ in>>c.realp;
+ cout<<"enter imag part of complex number "<<endl;
+ in>>c.imagp;
+ return in;
+}
+ostream &operator <<( ostream &out,complex &c)
+{
+ out<< c.realp <<"+"<<c.imagp<<"i"<<endl;
+ return out;
+}
+int main()
+{
+ complex c1 ,c2;
+ complex c3(1.2,2.3);
+ cout<<"complex no. 1 is"<<c1;
+ cout<<"complex no. 2 is"<<c2;
+ 
+ cout<<"complex no.3 is"<<c3;
+cout<<"enter complex number"<<endl;
+cin>>c2;
+cout<<"Addition of two complex number is "<<endl;
+c2= c1+c3;
+cout<<c2;
+cout<<"Multiplication of two complex number is "<<endl;
+c1= c2*c3;
+cout<<c1;
+return 0;
+}
